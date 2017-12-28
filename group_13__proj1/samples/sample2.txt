@@ -1,0 +1,55 @@
+(The sample program that draws a house)
+
+Dear Kakubo,
+
+
+Please,
+
+
+Draw a HOUSE at position [10, 10].
+
+
+Thank you.
+Best Wishes.
+
+
+P.S.
+
+
+P.P.S. I defined HOUSE at position [x, y] with height also length as the following:
+
+Please,
+
+(Definition of elements of a house)
+HOUSE has a Triangle with name Roof at position [x,y] with height [HOUSE's heigth/2] also length [HOUSE's length]. (Shape has another shape)
+HOUSE has a rectangle with name Body at position [x,y+HOUSE's heigth/2] with height [HOUSE's heigth/2] also length [HOUSE's length].
+HOUSE has a rectangle with name Door at position [x + HOUSE's length/2 - HOUSE's length/10,y+HOUSE's heigth/4] with height [HOUSE's heigth/4] also length [HOUSE's length/5].
+HOUSE has a rectangle with name Window-One at position [x+HOUSE's length/10,y+HOUSE's heigth/2+HOUSE's heigth/15] with height [HOUSE's heigth/20] also length [HOUSE's length/20].
+HOUSE has a rectangle with name Window-Two at position [x+HOUSE's length/10+HOUSE's length/3,y+HOUSE's heigth/2+HOUSE's heigth/15] with height [HOUSE's heigth/20] also length [HOUSE's length/20].
+
+Draw Roof. Draw Body. Draw Door. Draw Window-One. Draw Window-Two.
+
+Thank You.
+
+I defined a TRIANGLE at position [x, y] with height also length as the following:
+Please,
+
+
+(Definition of elements of a house)
+
+
+TRIANGLE has line with name side-left start [x, y+height] end [x+length/2, y+height].
+TRIANGLE has line with name side-right start [x+length/2, y] end [x+length, y+length].
+TRIANGLE has line with name base start [x, y+height] end [x+length, y+height].
+
+
+(Draw the triangle)
+
+
+Draw side-left. Draw side-right. Draw base.
+
+
+Thank You.
+
+
+!

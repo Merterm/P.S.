@@ -1,0 +1,8 @@
+Dear Kakubo,
+
+(Error 2: Block did not start with "Please")
+Draw a Circle at position[0,0].
+Draw a Rectangle.
+Thank you. 
+Best Wishes.
+!

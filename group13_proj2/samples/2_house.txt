@@ -1,0 +1,39 @@
+(The sample program that draws a house)
+
+Dear Kakubo,
+
+Please,
+Draw a HOUSE at position [10,10].
+Thank you.
+Best Wishes.
+
+
+P.P.S. I defined HOUSE at position [x,y] with height also length as the following:
+
+Please,
+
+(Definition of elements of a house)
+HOUSE has a Triangle with name Roof at position [0,0] with height [25] also length [50]. (Shape has another shape)
+HOUSE has a rectangle with name Body at position [0,25] with height [50] also length [50. 
+HOUSE has a rectangle with name Door at position [20,60] with height [15] also length [5].
+HOUSE has a rectangle with name Window-One at position [5,35] with height [5] also length [5].
+HOUSE has a rectangle with name Window-Two at position [40,35] with height [5] also length [5].
+
+Draw Roof. Draw Body. Draw Door. Draw Window-One. Draw Window-Two.
+
+Thank You.
+
+P.P.S. I defined a TRIANGLE at position [x,y] with height also length as the following:
+Please,
+
+(Definition of elements of a house)
+TRIANGLE has line with name side-left start [0,25] end [25,0].
+TRIANGLE has line with name side-right start [25,0] end [50,25].
+TRIANGLE has line with name base start [0,25] end [50,25].
+
+(Draw the triangle)
+Draw side-left. Draw side-right. Draw base.
+
+Thank You.
+
+!

@@ -1,0 +1,1250 @@
+   0  $accept : letter_declaration $end
+
+   1  letter_declaration : main_declaration letter_declaration
+
+   2  letter_tail : post_declaration END_OF_PRGM
+   3              | END_OF_PRGM
+
+   4  main_declaration : MAIN block_statement END_OF_MAIN
+
+   5  post_declaration : ps post_tail
+   6                   | pps post_tail
+
+   7  post_tail : ps
+   8            | pps
+   9            |
+
+  10  statement : functional_statement statement_tail
+  11            | if_statement statement_tail
+  12            | loop_statement statement_tail
+  13            | assignment statement_tail
+
+  14  statement_tail : statement
+  15                 |
+
+  16  ps : FUNCTION FUNCTION_NAME ID expression END_OF_DEF ps_statement
+
+  17  ps_statement : statement
+  18               | block_statement
+
+  19  pps : USR_DEF_SHAPE USR_SHAPE_NAME ID expression pps_tail
+
+  20  pps_tail : INHERITANCE ID END_OF_DEF pps_statement
+  21           | END_OF_DEF pps_statement
+
+  22  pps_statement : user_def_variable pps_statement
+  23                | statement
+  24                | block_statement
+
+  25  user_def_variable : ID USR_DEF_VAR ID expression
+  26                    |
+
+  27  functional_statement : ID expression
+  28                       | DRAW functional_tail
+
+  29  functional_tail : ID expression
+  30                  | SHAPE expression
+
+  31  expression : parameter expression_tail
+
+  32  expression_tail : expression END_OF_INPUT
+  33                  | END_OF_INPUT
+
+  34  parameter : POSITION POS_X_POS_Y
+  35            | WIDTH term
+  36            | HEIGHT term
+  37            | STROKE term
+  38            | COLOR color
+  39            | RND_CRNRS
+  40            | NAME ID
+  41            | START POS_X_POS_Y
+  42            | END POS_X_POS_Y
+  43            | ARROW_STRT POS_X_POS_Y
+  44            | ARROW_END POS_X_POS_Y
+  45            | DIR DIR_VAL
+  46            |
+
+  47  term : NUM
+  48       | ID
+
+  49  color : RED
+  50        | BLUE
+  51        | GREEN
+  52        | YELLOW
+  53        | BLACK
+  54        | WHITE
+
+  55  if_statement : IF PARAMETER conditional PARAMETER if_tail
+
+  56  conditional : condition conditional_tail
+
+  57  conditional_tail : AND conditional
+  58                   | OR conditional
+  59                   |
+
+  60  condition : ID condition_tail
+
+  61  condition_tail : GRTR condition
+  62                 | LESS condition
+  63                 | LOG_EQ condition
+  64                 | GRTR_EQ condition
+  65                 | LESS_EQ condition
+  66                 |
+
+  67  if_tail : statement else_tail
+  68          | block_statement else_tail
+
+  69  else_tail : ELSE statement ELSE block_statement
+  70            |
+
+  71  assignment : ID ASSIGNMENT assignment_tail
+
+  72  assignment_tail : NUM
+  73                  | ID
+  74                  | TRUE
+  75                  | FALSE
+  76                  | color
+  77                  | OP operand
+
+  78  operand : NUM
+  79          | ID
+
+  80  block_statement : BEGIN_OF_BLOCK statement END_OF_BLOCK
+
+  81  loop_statement : WHILE PARAMETER conditional PARAMETER loop_tail
+  82                 | NUM FOR PARAMETER loop_tail
+
+  83  loop_tail : statement
+  84            | block_statement
+
+  85  return_statement : RETURN ID
+  86                   | RETURN NUM
+
+state 0
+	$accept : . letter_declaration $end  (0)
+
+	MAIN  shift 1
+	.  error
+
+	letter_declaration  goto 2
+	main_declaration  goto 3
+
+
+state 1
+	main_declaration : MAIN . block_statement END_OF_MAIN  (4)
+
+	BEGIN_OF_BLOCK  shift 4
+	.  error
+
+	block_statement  goto 5
+
+
+state 2
+	$accept : letter_declaration . $end  (0)
+
+	$end  accept
+
+
+state 3
+	letter_declaration : main_declaration . letter_declaration  (1)
+
+	MAIN  shift 1
+	.  error
+
+	letter_declaration  goto 6
+	main_declaration  goto 3
+
+
+state 4
+	block_statement : BEGIN_OF_BLOCK . statement END_OF_BLOCK  (80)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	.  error
+
+	statement  goto 12
+	functional_statement  goto 13
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+state 5
+	main_declaration : MAIN block_statement . END_OF_MAIN  (4)
+
+	END_OF_MAIN  shift 17
+	.  error
+
+
+state 6
+	letter_declaration : main_declaration letter_declaration .  (1)
+
+	.  reduce 1
+
+
+7: shift/reduce conflict (shift 18, reduce 46) on POSITION
+7: shift/reduce conflict (shift 19, reduce 46) on WIDTH
+7: shift/reduce conflict (shift 20, reduce 46) on HEIGHT
+7: shift/reduce conflict (shift 21, reduce 46) on STROKE
+7: shift/reduce conflict (shift 22, reduce 46) on COLOR
+7: shift/reduce conflict (shift 23, reduce 46) on RND_CRNRS
+7: shift/reduce conflict (shift 24, reduce 46) on NAME
+7: shift/reduce conflict (shift 25, reduce 46) on START
+7: shift/reduce conflict (shift 26, reduce 46) on END
+7: shift/reduce conflict (shift 27, reduce 46) on ARROW_STRT
+7: shift/reduce conflict (shift 28, reduce 46) on ARROW_END
+7: shift/reduce conflict (shift 29, reduce 46) on DIR
+state 7
+	functional_statement : ID . expression  (27)
+	assignment : ID . ASSIGNMENT assignment_tail  (71)
+	parameter : .  (46)
+
+	POSITION  shift 18
+	WIDTH  shift 19
+	HEIGHT  shift 20
+	STROKE  shift 21
+	COLOR  shift 22
+	RND_CRNRS  shift 23
+	NAME  shift 24
+	START  shift 25
+	END  shift 26
+	ARROW_STRT  shift 27
+	ARROW_END  shift 28
+	DIR  shift 29
+	ASSIGNMENT  shift 30
+	END_OF_INPUT  reduce 46
+
+	expression  goto 31
+	parameter  goto 32
+
+
+state 8
+	functional_statement : DRAW . functional_tail  (28)
+
+	ID  shift 33
+	SHAPE  shift 34
+	.  error
+
+	functional_tail  goto 35
+
+
+state 9
+	loop_statement : NUM . FOR PARAMETER loop_tail  (82)
+
+	FOR  shift 36
+	.  error
+
+
+state 10
+	if_statement : IF . PARAMETER conditional PARAMETER if_tail  (55)
+
+	PARAMETER  shift 37
+	.  error
+
+
+state 11
+	loop_statement : WHILE . PARAMETER conditional PARAMETER loop_tail  (81)
+
+	PARAMETER  shift 38
+	.  error
+
+
+state 12
+	block_statement : BEGIN_OF_BLOCK statement . END_OF_BLOCK  (80)
+
+	END_OF_BLOCK  shift 39
+	.  error
+
+
+13: shift/reduce conflict (shift 7, reduce 15) on ID
+13: shift/reduce conflict (shift 8, reduce 15) on DRAW
+13: shift/reduce conflict (shift 9, reduce 15) on NUM
+13: shift/reduce conflict (shift 10, reduce 15) on IF
+13: shift/reduce conflict (shift 11, reduce 15) on WHILE
+state 13
+	statement : functional_statement . statement_tail  (10)
+	statement_tail : .  (15)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	ELSE  reduce 15
+	END_OF_BLOCK  reduce 15
+
+	statement  goto 40
+	functional_statement  goto 13
+	statement_tail  goto 41
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+14: shift/reduce conflict (shift 7, reduce 15) on ID
+14: shift/reduce conflict (shift 8, reduce 15) on DRAW
+14: shift/reduce conflict (shift 9, reduce 15) on NUM
+14: shift/reduce conflict (shift 10, reduce 15) on IF
+14: shift/reduce conflict (shift 11, reduce 15) on WHILE
+state 14
+	statement : if_statement . statement_tail  (11)
+	statement_tail : .  (15)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	ELSE  reduce 15
+	END_OF_BLOCK  reduce 15
+
+	statement  goto 40
+	functional_statement  goto 13
+	statement_tail  goto 42
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+15: shift/reduce conflict (shift 7, reduce 15) on ID
+15: shift/reduce conflict (shift 8, reduce 15) on DRAW
+15: shift/reduce conflict (shift 9, reduce 15) on NUM
+15: shift/reduce conflict (shift 10, reduce 15) on IF
+15: shift/reduce conflict (shift 11, reduce 15) on WHILE
+state 15
+	statement : loop_statement . statement_tail  (12)
+	statement_tail : .  (15)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	ELSE  reduce 15
+	END_OF_BLOCK  reduce 15
+
+	statement  goto 40
+	functional_statement  goto 13
+	statement_tail  goto 43
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+16: shift/reduce conflict (shift 7, reduce 15) on ID
+16: shift/reduce conflict (shift 8, reduce 15) on DRAW
+16: shift/reduce conflict (shift 9, reduce 15) on NUM
+16: shift/reduce conflict (shift 10, reduce 15) on IF
+16: shift/reduce conflict (shift 11, reduce 15) on WHILE
+state 16
+	statement : assignment . statement_tail  (13)
+	statement_tail : .  (15)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	ELSE  reduce 15
+	END_OF_BLOCK  reduce 15
+
+	statement  goto 40
+	functional_statement  goto 13
+	statement_tail  goto 44
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+state 17
+	main_declaration : MAIN block_statement END_OF_MAIN .  (4)
+
+	.  reduce 4
+
+
+state 18
+	parameter : POSITION . POS_X_POS_Y  (34)
+
+	POS_X_POS_Y  shift 45
+	.  error
+
+
+state 19
+	parameter : WIDTH . term  (35)
+
+	ID  shift 46
+	NUM  shift 47
+	.  error
+
+	term  goto 48
+
+
+state 20
+	parameter : HEIGHT . term  (36)
+
+	ID  shift 46
+	NUM  shift 47
+	.  error
+
+	term  goto 49
+
+
+state 21
+	parameter : STROKE . term  (37)
+
+	ID  shift 46
+	NUM  shift 47
+	.  error
+
+	term  goto 50
+
+
+state 22
+	parameter : COLOR . color  (38)
+
+	RED  shift 51
+	BLUE  shift 52
+	GREEN  shift 53
+	YELLOW  shift 54
+	BLACK  shift 55
+	WHITE  shift 56
+	.  error
+
+	color  goto 57
+
+
+state 23
+	parameter : RND_CRNRS .  (39)
+
+	.  reduce 39
+
+
+state 24
+	parameter : NAME . ID  (40)
+
+	ID  shift 58
+	.  error
+
+
+state 25
+	parameter : START . POS_X_POS_Y  (41)
+
+	POS_X_POS_Y  shift 59
+	.  error
+
+
+state 26
+	parameter : END . POS_X_POS_Y  (42)
+
+	POS_X_POS_Y  shift 60
+	.  error
+
+
+state 27
+	parameter : ARROW_STRT . POS_X_POS_Y  (43)
+
+	POS_X_POS_Y  shift 61
+	.  error
+
+
+state 28
+	parameter : ARROW_END . POS_X_POS_Y  (44)
+
+	POS_X_POS_Y  shift 62
+	.  error
+
+
+state 29
+	parameter : DIR . DIR_VAL  (45)
+
+	DIR_VAL  shift 63
+	.  error
+
+
+state 30
+	assignment : ID ASSIGNMENT . assignment_tail  (71)
+
+	ID  shift 64
+	NUM  shift 65
+	RED  shift 51
+	BLUE  shift 52
+	GREEN  shift 53
+	YELLOW  shift 54
+	BLACK  shift 55
+	WHITE  shift 56
+	TRUE  shift 66
+	FALSE  shift 67
+	OP  shift 68
+	.  error
+
+	color  goto 69
+	assignment_tail  goto 70
+
+
+state 31
+	functional_statement : ID expression .  (27)
+
+	.  reduce 27
+
+
+32: shift/reduce conflict (shift 71, reduce 46) on END_OF_INPUT
+32: shift/reduce conflict (shift 18, reduce 46) on POSITION
+32: shift/reduce conflict (shift 19, reduce 46) on WIDTH
+32: shift/reduce conflict (shift 20, reduce 46) on HEIGHT
+32: shift/reduce conflict (shift 21, reduce 46) on STROKE
+32: shift/reduce conflict (shift 22, reduce 46) on COLOR
+32: shift/reduce conflict (shift 23, reduce 46) on RND_CRNRS
+32: shift/reduce conflict (shift 24, reduce 46) on NAME
+32: shift/reduce conflict (shift 25, reduce 46) on START
+32: shift/reduce conflict (shift 26, reduce 46) on END
+32: shift/reduce conflict (shift 27, reduce 46) on ARROW_STRT
+32: shift/reduce conflict (shift 28, reduce 46) on ARROW_END
+32: shift/reduce conflict (shift 29, reduce 46) on DIR
+state 32
+	expression : parameter . expression_tail  (31)
+	parameter : .  (46)
+
+	END_OF_INPUT  shift 71
+	POSITION  shift 18
+	WIDTH  shift 19
+	HEIGHT  shift 20
+	STROKE  shift 21
+	COLOR  shift 22
+	RND_CRNRS  shift 23
+	NAME  shift 24
+	START  shift 25
+	END  shift 26
+	ARROW_STRT  shift 27
+	ARROW_END  shift 28
+	DIR  shift 29
+
+	expression  goto 72
+	parameter  goto 32
+	expression_tail  goto 73
+
+
+33: shift/reduce conflict (shift 18, reduce 46) on POSITION
+33: shift/reduce conflict (shift 19, reduce 46) on WIDTH
+33: shift/reduce conflict (shift 20, reduce 46) on HEIGHT
+33: shift/reduce conflict (shift 21, reduce 46) on STROKE
+33: shift/reduce conflict (shift 22, reduce 46) on COLOR
+33: shift/reduce conflict (shift 23, reduce 46) on RND_CRNRS
+33: shift/reduce conflict (shift 24, reduce 46) on NAME
+33: shift/reduce conflict (shift 25, reduce 46) on START
+33: shift/reduce conflict (shift 26, reduce 46) on END
+33: shift/reduce conflict (shift 27, reduce 46) on ARROW_STRT
+33: shift/reduce conflict (shift 28, reduce 46) on ARROW_END
+33: shift/reduce conflict (shift 29, reduce 46) on DIR
+state 33
+	functional_tail : ID . expression  (29)
+	parameter : .  (46)
+
+	POSITION  shift 18
+	WIDTH  shift 19
+	HEIGHT  shift 20
+	STROKE  shift 21
+	COLOR  shift 22
+	RND_CRNRS  shift 23
+	NAME  shift 24
+	START  shift 25
+	END  shift 26
+	ARROW_STRT  shift 27
+	ARROW_END  shift 28
+	DIR  shift 29
+	END_OF_INPUT  reduce 46
+
+	expression  goto 74
+	parameter  goto 32
+
+
+34: shift/reduce conflict (shift 18, reduce 46) on POSITION
+34: shift/reduce conflict (shift 19, reduce 46) on WIDTH
+34: shift/reduce conflict (shift 20, reduce 46) on HEIGHT
+34: shift/reduce conflict (shift 21, reduce 46) on STROKE
+34: shift/reduce conflict (shift 22, reduce 46) on COLOR
+34: shift/reduce conflict (shift 23, reduce 46) on RND_CRNRS
+34: shift/reduce conflict (shift 24, reduce 46) on NAME
+34: shift/reduce conflict (shift 25, reduce 46) on START
+34: shift/reduce conflict (shift 26, reduce 46) on END
+34: shift/reduce conflict (shift 27, reduce 46) on ARROW_STRT
+34: shift/reduce conflict (shift 28, reduce 46) on ARROW_END
+34: shift/reduce conflict (shift 29, reduce 46) on DIR
+state 34
+	functional_tail : SHAPE . expression  (30)
+	parameter : .  (46)
+
+	POSITION  shift 18
+	WIDTH  shift 19
+	HEIGHT  shift 20
+	STROKE  shift 21
+	COLOR  shift 22
+	RND_CRNRS  shift 23
+	NAME  shift 24
+	START  shift 25
+	END  shift 26
+	ARROW_STRT  shift 27
+	ARROW_END  shift 28
+	DIR  shift 29
+	END_OF_INPUT  reduce 46
+
+	expression  goto 75
+	parameter  goto 32
+
+
+state 35
+	functional_statement : DRAW functional_tail .  (28)
+
+	.  reduce 28
+
+
+state 36
+	loop_statement : NUM FOR . PARAMETER loop_tail  (82)
+
+	PARAMETER  shift 76
+	.  error
+
+
+state 37
+	if_statement : IF PARAMETER . conditional PARAMETER if_tail  (55)
+
+	ID  shift 77
+	.  error
+
+	conditional  goto 78
+	condition  goto 79
+
+
+state 38
+	loop_statement : WHILE PARAMETER . conditional PARAMETER loop_tail  (81)
+
+	ID  shift 77
+	.  error
+
+	conditional  goto 80
+	condition  goto 79
+
+
+state 39
+	block_statement : BEGIN_OF_BLOCK statement END_OF_BLOCK .  (80)
+
+	.  reduce 80
+
+
+state 40
+	statement_tail : statement .  (14)
+
+	.  reduce 14
+
+
+state 41
+	statement : functional_statement statement_tail .  (10)
+
+	.  reduce 10
+
+
+state 42
+	statement : if_statement statement_tail .  (11)
+
+	.  reduce 11
+
+
+state 43
+	statement : loop_statement statement_tail .  (12)
+
+	.  reduce 12
+
+
+state 44
+	statement : assignment statement_tail .  (13)
+
+	.  reduce 13
+
+
+state 45
+	parameter : POSITION POS_X_POS_Y .  (34)
+
+	.  reduce 34
+
+
+state 46
+	term : ID .  (48)
+
+	.  reduce 48
+
+
+state 47
+	term : NUM .  (47)
+
+	.  reduce 47
+
+
+state 48
+	parameter : WIDTH term .  (35)
+
+	.  reduce 35
+
+
+state 49
+	parameter : HEIGHT term .  (36)
+
+	.  reduce 36
+
+
+state 50
+	parameter : STROKE term .  (37)
+
+	.  reduce 37
+
+
+state 51
+	color : RED .  (49)
+
+	.  reduce 49
+
+
+state 52
+	color : BLUE .  (50)
+
+	.  reduce 50
+
+
+state 53
+	color : GREEN .  (51)
+
+	.  reduce 51
+
+
+state 54
+	color : YELLOW .  (52)
+
+	.  reduce 52
+
+
+state 55
+	color : BLACK .  (53)
+
+	.  reduce 53
+
+
+state 56
+	color : WHITE .  (54)
+
+	.  reduce 54
+
+
+state 57
+	parameter : COLOR color .  (38)
+
+	.  reduce 38
+
+
+state 58
+	parameter : NAME ID .  (40)
+
+	.  reduce 40
+
+
+state 59
+	parameter : START POS_X_POS_Y .  (41)
+
+	.  reduce 41
+
+
+state 60
+	parameter : END POS_X_POS_Y .  (42)
+
+	.  reduce 42
+
+
+state 61
+	parameter : ARROW_STRT POS_X_POS_Y .  (43)
+
+	.  reduce 43
+
+
+state 62
+	parameter : ARROW_END POS_X_POS_Y .  (44)
+
+	.  reduce 44
+
+
+state 63
+	parameter : DIR DIR_VAL .  (45)
+
+	.  reduce 45
+
+
+state 64
+	assignment_tail : ID .  (73)
+
+	.  reduce 73
+
+
+state 65
+	assignment_tail : NUM .  (72)
+
+	.  reduce 72
+
+
+state 66
+	assignment_tail : TRUE .  (74)
+
+	.  reduce 74
+
+
+state 67
+	assignment_tail : FALSE .  (75)
+
+	.  reduce 75
+
+
+state 68
+	assignment_tail : OP . operand  (77)
+
+	ID  shift 81
+	NUM  shift 82
+	.  error
+
+	operand  goto 83
+
+
+state 69
+	assignment_tail : color .  (76)
+
+	.  reduce 76
+
+
+state 70
+	assignment : ID ASSIGNMENT assignment_tail .  (71)
+
+	.  reduce 71
+
+
+state 71
+	expression_tail : END_OF_INPUT .  (33)
+
+	.  reduce 33
+
+
+state 72
+	expression_tail : expression . END_OF_INPUT  (32)
+
+	END_OF_INPUT  shift 84
+	.  error
+
+
+state 73
+	expression : parameter expression_tail .  (31)
+
+	.  reduce 31
+
+
+state 74
+	functional_tail : ID expression .  (29)
+
+	.  reduce 29
+
+
+state 75
+	functional_tail : SHAPE expression .  (30)
+
+	.  reduce 30
+
+
+state 76
+	loop_statement : NUM FOR PARAMETER . loop_tail  (82)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	BEGIN_OF_BLOCK  shift 4
+	WHILE  shift 11
+	.  error
+
+	block_statement  goto 85
+	statement  goto 86
+	functional_statement  goto 13
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+	loop_tail  goto 87
+
+
+state 77
+	condition : ID . condition_tail  (60)
+	condition_tail : .  (66)
+
+	GRTR  shift 88
+	LESS  shift 89
+	LOG_EQ  shift 90
+	GRTR_EQ  shift 91
+	LESS_EQ  shift 92
+	PARAMETER  reduce 66
+	AND  reduce 66
+	OR  reduce 66
+
+	condition_tail  goto 93
+
+
+state 78
+	if_statement : IF PARAMETER conditional . PARAMETER if_tail  (55)
+
+	PARAMETER  shift 94
+	.  error
+
+
+state 79
+	conditional : condition . conditional_tail  (56)
+	conditional_tail : .  (59)
+
+	AND  shift 95
+	OR  shift 96
+	PARAMETER  reduce 59
+
+	conditional_tail  goto 97
+
+
+state 80
+	loop_statement : WHILE PARAMETER conditional . PARAMETER loop_tail  (81)
+
+	PARAMETER  shift 98
+	.  error
+
+
+state 81
+	operand : ID .  (79)
+
+	.  reduce 79
+
+
+state 82
+	operand : NUM .  (78)
+
+	.  reduce 78
+
+
+state 83
+	assignment_tail : OP operand .  (77)
+
+	.  reduce 77
+
+
+state 84
+	expression_tail : expression END_OF_INPUT .  (32)
+
+	.  reduce 32
+
+
+state 85
+	loop_tail : block_statement .  (84)
+
+	.  reduce 84
+
+
+state 86
+	loop_tail : statement .  (83)
+
+	.  reduce 83
+
+
+state 87
+	loop_statement : NUM FOR PARAMETER loop_tail .  (82)
+
+	.  reduce 82
+
+
+state 88
+	condition_tail : GRTR . condition  (61)
+
+	ID  shift 77
+	.  error
+
+	condition  goto 99
+
+
+state 89
+	condition_tail : LESS . condition  (62)
+
+	ID  shift 77
+	.  error
+
+	condition  goto 100
+
+
+state 90
+	condition_tail : LOG_EQ . condition  (63)
+
+	ID  shift 77
+	.  error
+
+	condition  goto 101
+
+
+state 91
+	condition_tail : GRTR_EQ . condition  (64)
+
+	ID  shift 77
+	.  error
+
+	condition  goto 102
+
+
+state 92
+	condition_tail : LESS_EQ . condition  (65)
+
+	ID  shift 77
+	.  error
+
+	condition  goto 103
+
+
+state 93
+	condition : ID condition_tail .  (60)
+
+	.  reduce 60
+
+
+state 94
+	if_statement : IF PARAMETER conditional PARAMETER . if_tail  (55)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	BEGIN_OF_BLOCK  shift 4
+	WHILE  shift 11
+	.  error
+
+	block_statement  goto 104
+	statement  goto 105
+	functional_statement  goto 13
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+	if_tail  goto 106
+
+
+state 95
+	conditional_tail : AND . conditional  (57)
+
+	ID  shift 77
+	.  error
+
+	conditional  goto 107
+	condition  goto 79
+
+
+state 96
+	conditional_tail : OR . conditional  (58)
+
+	ID  shift 77
+	.  error
+
+	conditional  goto 108
+	condition  goto 79
+
+
+state 97
+	conditional : condition conditional_tail .  (56)
+
+	.  reduce 56
+
+
+state 98
+	loop_statement : WHILE PARAMETER conditional PARAMETER . loop_tail  (81)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	BEGIN_OF_BLOCK  shift 4
+	WHILE  shift 11
+	.  error
+
+	block_statement  goto 85
+	statement  goto 86
+	functional_statement  goto 13
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+	loop_tail  goto 109
+
+
+state 99
+	condition_tail : GRTR condition .  (61)
+
+	.  reduce 61
+
+
+state 100
+	condition_tail : LESS condition .  (62)
+
+	.  reduce 62
+
+
+state 101
+	condition_tail : LOG_EQ condition .  (63)
+
+	.  reduce 63
+
+
+state 102
+	condition_tail : GRTR_EQ condition .  (64)
+
+	.  reduce 64
+
+
+state 103
+	condition_tail : LESS_EQ condition .  (65)
+
+	.  reduce 65
+
+
+104: shift/reduce conflict (shift 110, reduce 70) on ELSE
+state 104
+	if_tail : block_statement . else_tail  (68)
+	else_tail : .  (70)
+
+	ELSE  shift 110
+	ID  reduce 70
+	DRAW  reduce 70
+	NUM  reduce 70
+	IF  reduce 70
+	END_OF_BLOCK  reduce 70
+	WHILE  reduce 70
+
+	else_tail  goto 111
+
+
+105: shift/reduce conflict (shift 110, reduce 70) on ELSE
+state 105
+	if_tail : statement . else_tail  (67)
+	else_tail : .  (70)
+
+	ELSE  shift 110
+	ID  reduce 70
+	DRAW  reduce 70
+	NUM  reduce 70
+	IF  reduce 70
+	END_OF_BLOCK  reduce 70
+	WHILE  reduce 70
+
+	else_tail  goto 112
+
+
+state 106
+	if_statement : IF PARAMETER conditional PARAMETER if_tail .  (55)
+
+	.  reduce 55
+
+
+state 107
+	conditional_tail : AND conditional .  (57)
+
+	.  reduce 57
+
+
+state 108
+	conditional_tail : OR conditional .  (58)
+
+	.  reduce 58
+
+
+state 109
+	loop_statement : WHILE PARAMETER conditional PARAMETER loop_tail .  (81)
+
+	.  reduce 81
+
+
+state 110
+	else_tail : ELSE . statement ELSE block_statement  (69)
+
+	ID  shift 7
+	DRAW  shift 8
+	NUM  shift 9
+	IF  shift 10
+	WHILE  shift 11
+	.  error
+
+	statement  goto 113
+	functional_statement  goto 13
+	if_statement  goto 14
+	loop_statement  goto 15
+	assignment  goto 16
+
+
+state 111
+	if_tail : block_statement else_tail .  (68)
+
+	.  reduce 68
+
+
+state 112
+	if_tail : statement else_tail .  (67)
+
+	.  reduce 67
+
+
+state 113
+	else_tail : ELSE statement . ELSE block_statement  (69)
+
+	ELSE  shift 114
+	.  error
+
+
+state 114
+	else_tail : ELSE statement ELSE . block_statement  (69)
+
+	BEGIN_OF_BLOCK  shift 4
+	.  error
+
+	block_statement  goto 115
+
+
+state 115
+	else_tail : ELSE statement ELSE block_statement .  (69)
+
+	.  reduce 69
+
+
+Rules never reduced:
+	letter_tail : post_declaration END_OF_PRGM  (2)
+	letter_tail : END_OF_PRGM  (3)
+	post_declaration : ps post_tail  (5)
+	post_declaration : pps post_tail  (6)
+	post_tail : ps  (7)
+	post_tail : pps  (8)
+	post_tail :  (9)
+	ps : FUNCTION FUNCTION_NAME ID expression END_OF_DEF ps_statement  (16)
+	ps_statement : statement  (17)
+	ps_statement : block_statement  (18)
+	pps : USR_DEF_SHAPE USR_SHAPE_NAME ID expression pps_tail  (19)
+	pps_tail : INHERITANCE ID END_OF_DEF pps_statement  (20)
+	pps_tail : END_OF_DEF pps_statement  (21)
+	pps_statement : user_def_variable pps_statement  (22)
+	pps_statement : statement  (23)
+	pps_statement : block_statement  (24)
+	user_def_variable : ID USR_DEF_VAR ID expression  (25)
+	user_def_variable :  (26)
+	return_statement : RETURN ID  (85)
+	return_statement : RETURN NUM  (86)
+
+
+State 7 contains 12 shift/reduce conflicts.
+State 13 contains 5 shift/reduce conflicts.
+State 14 contains 5 shift/reduce conflicts.
+State 15 contains 5 shift/reduce conflicts.
+State 16 contains 5 shift/reduce conflicts.
+State 32 contains 13 shift/reduce conflicts.
+State 33 contains 12 shift/reduce conflicts.
+State 34 contains 12 shift/reduce conflicts.
+State 104 contains 1 shift/reduce conflict.
+State 105 contains 1 shift/reduce conflict.
+
+
+56 terminals, 35 nonterminals
+87 grammar rules, 116 states

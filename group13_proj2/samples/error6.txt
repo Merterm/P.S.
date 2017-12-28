@@ -1,0 +1,5 @@
+Dear Kakubo, 
+
+P.S. the function ADD as the following: (Error 6: P.S. declaration does not start with "I defined")
+
+!

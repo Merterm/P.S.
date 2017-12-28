@@ -1,0 +1,42 @@
+Dear Kakubo,
+
+Please, 
+
+Draw BUNDLE-OF-GRAPES at position[0,0].
+Draw a rectangle using height[10] width[10] using color red at position[55,55]. (This is the tray)
+
+Thank you. 
+Best Wishes.
+
+P.S. I defined the function ADD-TWO-NUMBERS with number also
+other-number as the following:
+
+Please, 
+number is number plus other-number.
+Return number. 
+
+Thank you. 
+
+P.S. I defined the function DRAW-ROW with grape-height grape-width also grape-x row-y number-grapes as the following:
+
+Please,
+
+Draw oval with grape-height grape-width at position[grape-x,row-y], number-grapes times. 
+ADD-TWO-NUMBERS with grape-x also grape-width
+
+Thank You.
+
+P.P.S. I defined BUNDLE-OF-GRAPES at position[x,y] as the following:
+
+Please, 
+BUNDLE-OF-GRAPES has grape-height grape-width grape-x row-y number-grapes.
+Draw a rectangle using width[5] and height[10] at position[25,0].
+DRAW-ROW with [10] [10] also [0] [10] [6].
+DRAW-ROW with [8] [8] also [3] [20] [5].
+DRAW-ROW with [6] [6] also [5] [30] [4].
+DRAW-ROW with [6] [6] also [7] [40] [3].
+DRAW-ROW with [4] [4] also [9] [45] [2].
+DRAW-ROW with [3] [3] also [10] [50] [1].
+
+Thank you. 
+!

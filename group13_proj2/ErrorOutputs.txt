@@ -1,0 +1,648 @@
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Please, draw a circle at position[0,0]. Thank you. Best Wishes!
+
+********************************
+
+Found error:  Main should start with Dear Kakubo!
+
+********************************
+<BEGIN_OF_BLOCK><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN><END_OF_PRGM>
+
+(Error1: Does not start with "Dear Kakubo")
+
+Please,
+Draw a Circle at position[0,0].
+Thank you.
+
+Best Wishes
+
+!
+********************************
+
+Found error:  syntax error
+
+********************************
+<BEGIN_OF_BLOCK><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT>
+********************************
+
+Found error:  Block does not begin with Please!
+
+********************************
+<END_OF_BLOCK>
+********************************
+
+Found error:  Main should start with Dear Kakubo!
+
+********************************
+<END_OF_MAIN>
+<END_OF_PRGM>
+
+
+^Z
+[25]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+(Error1: Does not start with "Dear Kakubo")
+
+Please,
+Draw a Circle at position[0,0].
+Thank you.
+
+Best Wishes
+
+!<BEGIN_OF_BLOCK><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><END_OF_BLOCK>
+********************************
+
+Found error:  Main should start with Dear Kakubo!
+
+********************************
+<END_OF_MAIN>
+<END_OF_PRGM>
+
+^[[A^[[B^[[B
+
+********************************
+
+Found error:  syntax error
+
+********************************
+[<ID>[<ID>[<ID>
+
+
+^Z
+[26]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+  
+
+
+^Z
+[27]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+(Error 2: Block did not start with "Please")
+Draw a Circle at position[0,0].
+Draw a Rectangle.
+Thank you. 
+Best Wishes.
+!<MAIN>
+********************************
+
+Found error:  syntax error
+
+********************************
+<DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><DRAW><SHAPE><END_OF_INPUT>
+********************************
+
+Found error:  Block does not begin with Please!
+
+********************************
+<END_OF_BLOCK><END_OF_MAIN>
+<END_OF_PRGM>
+
+^Z
+[28]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+Draw a Circle.
+
+(Error 10: No exclamation mark "!" to signal end of file/program)<MAIN>
+********************************
+
+Found error:  syntax error
+
+********************************
+<DRAW><ID><END_OF_INPUT>
+
+
+^Z
+[29]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ yacc -d ps.y
+yacc: 3 rules never reduced
+yacc: 252 shift/reduce conflicts, 7 reduce/reduce conflicts.
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ g++ -o ps y.tab.c lex.yy.c 
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, draw a circle. Thank you. Best wishes
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN>
+Dear Kakubo, please, draw a circle. Thank you. Best wishes
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  No exclamation mark to denote the end of file!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Block does not begin with Please!
+
+********************************
+
+********************************
+
+Found error:  Main should start with Dear Kakubo!
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN>
+
+
+
+^Z
+[30]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ g++ -o ps y.tab.c lex.yy.c 
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ yacc -d ps.yyacc: 3 rules never reduced
+yacc: 252 shift/reduce conflicts, 7 reduce/reduce conflicts.
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ g++ -o ps y.tab.c lex.yy.c 
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+P.S. I defined the function Merterm as the following: x = this.
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Draw keyword missing in draw function!
+
+********************************
+<FUNCTION><FUNCT_NAME><ID><END_OF_DEF><ID><ASSIGNMENT><ID><END_OF_INPUT>^Z
+[31]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, draw a circle. Thank you. Best wishes
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN>
+Dear Kakubo, please, draw a circle. Thank you. Best wishes
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Block does not begin with Please!
+
+********************************
+
+********************************
+
+Found error:  Main should start with Dear Kakubo!
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN>
+
+^Z
+[32]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, draw a circle. Thank you. Best wishes Dear Kakubo
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN><MAIN>
+
+
+^[[A^Z
+[33]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ yacc -d ps.yyacc: 3 rules never reduced
+yacc: 252 shift/reduce conflicts, 7 reduce/reduce conflicts.
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ g++ -o ps y.tab.c lex.yy.c 
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, draw a circle. Thank you. Best wishes Dear Kakubo
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  No exclamation mark to denote the end of file!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN><MAIN>
+
+
+
+^Z
+[34]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+Please,
+
+Draw a Circle.
+
+Thank you.
+Best Wishes
+
+Dear Kakubo
+
+(Error 10: No exclamation mark "!" to signal end of file/program)<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN>
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  No exclamation mark to denote the end of file!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<MAIN>
+
+^Z
+[35]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+^Z
+[36]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ yacc -d ps.yyacc: 3 rules never reduced
+yacc: 252 shift/reduce conflicts, 7 reduce/reduce conflicts.
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ g++ -o ps y.tab.c lex.yy.c 
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps2 times draw circle.
+
+********************************
+
+Found error:  syntax error
+
+********************************
+2<FOR><DRAW><ID><END_OF_INPUT>^Z
+[37]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+[2] times draw circle.
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<NUM><FOR><DRAW><ID><END_OF_INPUT>
+
+^Z
+[38]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, [2] times draw a circle. Thank you. Best wishes!
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Your loops are not hugged by commas!
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><NUM><FOR><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN><END_OF_PRGM>
+
+
+^Z
+[39]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+Please,
+
+[2] times draw circle. (Error 9: loops are not hugged by commas)
+
+Thank you.
+Best wishes
+
+!<MAIN><BEGIN_OF_BLOCK>
+********************************
+
+Found error:  syntax error
+
+********************************
+<NUM><FOR><DRAW><ID><END_OF_INPUT>
+********************************
+
+Found error:  Your loops are not hugged by commas!
+
+********************************
+<END_OF_BLOCK><END_OF_MAIN>
+<END_OF_PRGM>
+
+^Z
+[40]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+P.S. I defined GRAPES as the following: (Error 8: Started with P.S. for user-defined variable)
+
+!<MAIN>
+********************************
+
+Found error:  syntax error
+
+********************************
+<FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF>
+<END_OF_PRGM>
+
+^Z
+[41]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, draw GRAPES. Thank you. Best Wishes P.S. I defined GRAPES as the following: draw a circle.!
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  No exclamation mark to denote the end of file!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK><END_OF_MAIN><FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF><DRAW><ID><END_OF_INPUT><END_OF_PRGM>
+
+^Z
+[42]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+^C
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+P.S. I defined the function ADD
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<FUNCTION><FUNCT_NAME><ID>
+
+^Z
+[43]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+P.S. I defined Merterm as the following: draw a circle.
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Draw keyword missing in draw function!
+
+********************************
+<FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF><DRAW><ID><END_OF_INPUT>
+P.S. I defined Merterm as the following: draw a circle
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF><DRAW><ID>^Z
+[44]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+P.S. I defined Merterm as the following: draw a circle!
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF><DRAW><ID><END_OF_PRGM>^Z
+[45]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+P.S. I defined Merterm as the following: please, draw a circle. Thank you.
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Draw keyword missing in draw function!
+
+********************************
+
+********************************
+
+Found error:  Block does not begin with Please!
+
+********************************
+<FUNCTION><USR_SHAPE_NAME><ID><END_OF_DEF><BEGIN_OF_BLOCK><DRAW><ID><END_OF_INPUT><END_OF_BLOCK>
+
+^Z
+[46]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+Please, 
+
+Draw a circle at position[0,0].
+Draw a rectangle.
+
+Thank you. 
+(Error 5: Main does not end with "Best Wishes")
+!<MAIN><BEGIN_OF_BLOCK><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><DRAW><SHAPE><END_OF_INPUT><END_OF_BLOCK>
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Main should end with Best Wishes!
+
+********************************
+<END_OF_PRGM>
+
+
+
+^Z
+[47]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+
+Please, 
+
+Draw a Circle at position[0,0].
+Draw a rectangle using height[10]
+
+(Error 4: Block did not end with "Thank you")
+Best Wishes.
+!<MAIN><BEGIN_OF_BLOCK><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><DRAW><SHAPE><HEIGHT><NUM>
+********************************
+
+Found error:  syntax error
+
+********************************
+<END_OF_MAIN>
+<END_OF_PRGM>
+
+^Z
+[48]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Please, [4] times, draw a circle at position[10,16]. draw a rectangle using height[10].
+<BEGIN_OF_BLOCK><NUM><FOR><PARAMETER><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><DRAW><SHAPE><HEIGHT><NUM><END_OF_INPUT>!
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Block does not end with Thank You!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<END_OF_PRGM>
+
+Please, [4] times, draw a circle at position[10,16]. if merterm is greater than everybody, draw merterm. !
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Draw keyword missing in draw function!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<BEGIN_OF_BLOCK><NUM><FOR><PARAMETER><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><IF><ID><ASSIGNMENT><ID><ID><ID><PARAMETER><DRAW><ID><END_OF_INPUT><END_OF_PRGM>
+
+^Z
+[49]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Please, 
+
+[4] times, draw a circle at position[10,16]. 
+draw a rectangle using height[10].
+
+
+(Error 4: Block did not end with "Thank you")
+
+!<BEGIN_OF_BLOCK><NUM><FOR><PARAMETER><DRAW><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><DRAW><SHAPE><HEIGHT><NUM><END_OF_INPUT>
+
+********************************
+
+Found error:  syntax error
+
+********************************
+
+********************************
+
+Found error:  Block does not end with Thank You!
+
+********************************
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<END_OF_PRGM>
+
+Dear Kakubo,
+(Error 3: "Draw" missing) Circle at position[0,0].
+Best Wishes.
+!<MAIN><ID><POSITION><POS_X_POS_Y><END_OF_INPUT>
+********************************
+
+Found error:  syntax error
+
+********************************
+<END_OF_MAIN>
+<END_OF_PRGM>
+
+^Z
+[50]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo,
+(Error 3: "Draw" missing) Circle at position[0,0].
+Best Wishes.
+!<MAIN>
+********************************
+
+Found error:  syntax error
+
+********************************
+<ID><POSITION><POS_X_POS_Y><END_OF_INPUT>
+********************************
+
+Found error:  syntax error
+
+********************************
+<END_OF_MAIN>
+<END_OF_PRGM>
+
+^Z
+[51]+  Stopped                 ./ps
+merterm@merterm-MacBook:~/Downloads/group<13>_proj1/code$ ./ps
+Dear Kakubo, please, circle at position[0,0]. Best Wishes!
+
+********************************
+
+Found error:  syntax error
+
+********************************
+<MAIN><BEGIN_OF_BLOCK><ID><POSITION><POS_X_POS_Y><END_OF_INPUT><END_OF_MAIN><END_OF_PRGM>
+
+

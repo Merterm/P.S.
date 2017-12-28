@@ -1,0 +1,10 @@
+Dear Kakubo,
+
+Please, 
+
+Draw a circle at position[0,0].
+Draw a rectangle.
+
+Thank you. 
+(Error 5: Main does not end with "Best Wishes")
+!

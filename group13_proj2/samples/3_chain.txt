@@ -1,0 +1,29 @@
+Dear Kakubo,
+
+Draw a CHAIN at position [15,0].
+
+Best Wishes. 
+
+(This function will be used in making the chain)
+P.S I defined the function Make-Circle at position[x,y] as the following: 
+
+Please, 
+Draw oval using color yellow also using length[1] width[1] at position[x,y].
+Thank you. 
+
+
+P.P.S I defined CHAIN at position[x,y] as the following:
+Please, 
+CHAIN has Temporary-Number.
+Temporary-Number is 0. 
+
+Until, Temporary-Number is 20, 
+Please, 
+Make-Circle at position[x,y].
+x assign x plus 2. 
+y assign y plus 2. 
+Thank you. 
+
+Thank you.
+(End of program)
+!

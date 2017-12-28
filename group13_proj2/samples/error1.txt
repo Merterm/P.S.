@@ -1,0 +1,6 @@
+(Error1: Does not start with "Dear Kakubo")
+Please,
+Draw a Circle at position[0,0].
+Thank you.
+Best Wishes
+!

@@ -1,0 +1,46 @@
+(This program draws a stick figure)
+Dear Kakubo,
+
+Draw a STICK-FIGURE at position [15,0].
+
+Best Wishes. 
+
+
+P.S. I defined the function Draw-eyes at position [x+1, y+1] as the following: 
+
+Please, 
+Draw oval with length [0.5] width [0.5] at position [x+1,y+1].
+Draw oval with length [0.5] width [0.5] at position [x+3,y+1].
+Thank you. 
+
+P.S. I defined the function Draw-arms at position [x-5,y+5] as the following:
+
+Please, 
+Draw line with start [x] end [x-5] at direction SE. 
+Draw line with start [x+5] end [x+10] at direction SW. 
+Thank you.
+
+P.S. I defined the function Draw-legs at position[x+3.5,y+20] as the following:
+
+Please, 
+Draw line with start [x+3.5] end [x-10] at direction SE. 
+Draw line with start [x+3.5] end [x+10] at direction SW. 
+Thank you. 
+
+P.P.S. I defined STICK-FIGURE at position [x, y] as the following:
+Please, 
+
+STICK-FIGURE has a head.
+STICK-FIGURE has two arms.
+STICK-FIGURE has two legs. 
+STICK-FIGURE has one body. 
+STICK-FIGURE has two eyes. 
+
+Draw oval with length [5] and width [5] at position [x,y].
+Draw-eyes at position [x+1, y+1].
+Draw body with length [20] at position [x+3.5, y+5].
+Draw-arms at position [x-5, y+5].
+Draw-legs at position [x+3.5,y+20].
+
+Thank you.
+!

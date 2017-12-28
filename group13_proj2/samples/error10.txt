@@ -1,0 +1,8 @@
+Dear Kakubo,
+Please,
+Draw a Circle.
+Thank you.
+Best Wishes
+
+Dear Kakubo
+(Error 10: No exclamation mark "!" to signal end of file/program)
